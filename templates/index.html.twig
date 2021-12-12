@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+</head>
+<body>
+<div style="display: flex; gap: 10px;">
+    {% for user in users %}
+        <div style="color: white; background-color:black; padding: 15px; border: 1px solid red; position: relative;">
+            <span style="position: absolute; right: 2px; top: 2px;">{{ loop.index }}</span>
+            <p>{{ user.name | striptags | replace({"gabor 2": "Second"}) }}</p>
+            <p>{{ user.email | myCustomFilter }}</p>
+            <p>{{ "now" | date("m-d H:i") }}</p>
+            {% if loop.first %}
+                <span style="position: absolute; right: 2px; bottom: 2px; color: red;">FIRST</span>
+            {% endif %}
+            {% if loop.last %}
+                <span style="position: absolute; right: 2px; bottom: 2px; color: red;">LAST</span>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% for i in 0..10 %}
+    {{ i }}
+{% endfor %}
+</body>
+</html>
