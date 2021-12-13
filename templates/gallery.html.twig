@@ -1,0 +1,69 @@
+{# Данный шаблон содержит верстку главной страницы галереи (Задание 1. а) / в)) #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Галерея{% endblock %}
+
+{% block body %}
+  <section class="gallery">
+    <div class="gallery__container wrapper">
+      <h1 class="gallery__heading">Галерея</h1>
+      <div class="gallery__images">
+        {% for image in images %}
+          <a href="../public/image_preview.php?image={{ image.url }}" class="gallery__image-link"><img
+              src="{{ image.url }}" alt="image {{ image.id }}" class="gallery__image"></a>
+        {% endfor %}
+      </div>
+      <form action="../public/image_uploader.php" method="POST" enctype="multipart/form-data" class="gallery__form">
+        <input type="file" name="user_image" required>
+        <input type="submit" value="Загрузить">
+      </form>
+    </div>
+  </section>
+{% endblock %}
+
+{% block styles %}
+  <style>
+    .gallery {
+      padding: 50px;
+    }
+
+    .gallery__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: 50vh;
+    }
+
+    .gallery__heading {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .gallery__images {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .gallery__image-link {
+      max-width: 220px;
+      object-fit: contain;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gallery__image {
+      width: 100%;
+      outline: 3px solid black;
+      transition: 0.3s;
+    }
+
+    .gallery__image:hover {
+      outline: 3px solid grey;
+    }
+
+    .gallery__form {
+      align-self: center;
+    }
+  </style>
+{% endblock %}

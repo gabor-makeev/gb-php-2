@@ -1,0 +1,32 @@
+{# Верстка страницы для отображения конкретного изображения (Задание 1. б)) #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Превью изображения{% endblock %}
+
+{% block body %}
+  <a href="../public/index.php" class="image_preview__back-to-home">Назад на главную</a>
+  <section class="image_preview wrapper">
+    <img src="{{ previewImage }}" alt="{{ previewImage }}" class="image_preview__img">
+  </section>
+{% endblock %}
+
+{% block styles %}
+  <style>
+    .image_preview__back-to-home {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+    }
+
+    .image_preview {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .image_preview__img {
+      max-width: 100%;
+    }
+  </style>
+{% endblock %}
