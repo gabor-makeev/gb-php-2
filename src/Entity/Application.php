@@ -7,6 +7,19 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Сущность Application связана с еще двума сущностями -
+ * Company и ProgrammingLang.
+ *
+ * Связь с Company - Many To One
+ * (У одного приложения только одна компания-разработчик, но одной
+ * компанией-разработчиком может быть разработано множество приложений).
+ *
+ * Связь с ProgrammingLang - Many To Many
+ * (Приложение может быть написано множеством языков программирования,
+ * а на одном языке программирования может быть написано множество приложений).
+*/
+
 #[ORM\Entity(repositoryClass: ApplicationRepository::class)]
 class Application
 {

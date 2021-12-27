@@ -7,6 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Сущность ProgrammingLang связана только с сущностью Application.
+ * Более детальные комментарии в файле Application.php.
+ */
+
 #[ORM\Entity(repositoryClass: ProgrammingLangRepository::class)]
 class ProgrammingLang
 {
