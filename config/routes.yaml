@@ -1,3 +1,9 @@
+product_view:
+    path: /product/{product_id}
+    controller: App\Controller\ProductController::getProduct
+    methods:
+        - GET
+
 controllers:
     resource: ../src/Controller/
     type: annotation
