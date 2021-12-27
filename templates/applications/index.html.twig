@@ -1,0 +1,39 @@
+{# Шаблон для вывода информации о всех приложениях
+    либо об определенном приложении в зависимости от запроса
+#}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Applications{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .application__container {
+        border: 1px solid black;
+        padding: 20px
+    }
+</style>
+
+<div class="example-wrapper">
+    <div class="application__container">
+    {% if(applications is not defined) %}
+        <h1>Here is some information about {{ application.name }}</h1>
+        <p>Title: {{ application.name }}</p>
+        <p>Developed by: {{ application.developedBy }}</p>
+        <p>Written in: {{ application.programmingLangs | join(', ') }}</p>
+        <p>Description: {{ application.description }}</p>
+    {% else %}
+        <h1>Here are all the applications from our database</h1>
+        {% for application in applications %}
+            <div class="application__container">
+                <p>Title: {{ application.name }}</p>
+                <p>Developed by: {{ application.developedBy }}</p>
+                <p>Written in: {{ application.programmingLangs | join(', ') }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+</div>
+{% endblock %}
