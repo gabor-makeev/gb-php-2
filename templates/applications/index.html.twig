@@ -20,10 +20,10 @@
     <div class="application__container">
     {% if(applications is not defined) %}
         <h1>Here is some information about {{ application.name }}</h1>
-        <p>Title: {{ application.name }}</p>
-        <p>Developed by: {{ application.developedBy }}</p>
-        <p>Written in: {{ application.programmingLangs | join(', ') }}</p>
-        <p>Description: {{ application.description }}</p>
+        <p class="application__container-title">Title: {{ application.name }}</p>
+        <p class="application__container-developed-by">Developed by: {{ application.developedBy }}</p>
+        <p class="application__container-written-in">Written in: {{ application.programmingLangs | join(', ') }}</p>
+        <p class="application__container-description">Description: {{ application.description }}</p>
     {% else %}
         <h1>Here are all the applications from our database</h1>
         {% for application in applications %}
