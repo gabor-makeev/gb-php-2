@@ -1,0 +1,34 @@
+{# Шаблон для вывода информации о всех компаниях из базы данных
+    либо об определенной компании в зависимости от запроса
+#}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Companies{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>
+        {% if(companies is not defined) %}
+            Here is some information about {{ company.name }}
+        {% else %}
+            Here are all the companies from our database
+        {% endif %}
+    </h1>
+    {% if(companies is not defined) %}
+        <h3>Name: {{ company.name }}</h3>
+        <h4>History: {{ company.history }}</h4>
+    {% else %}
+        <ul>
+            {% for company in companies %}
+                <li>{{ company.name }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}
